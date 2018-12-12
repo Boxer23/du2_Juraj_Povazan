@@ -8,8 +8,10 @@ suradnice = []
 for x_y in features:
     props = x_y["geometry"]
     suradnice.append(props["coordinates"])
+    print(props["coordinates"])
 
-print(suradnice)
+#for s in suradnice:
+    #print(s)
 
 with open('data.txt', 'w') as outfile:
     json.dump(suradnice, outfile)
