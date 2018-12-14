@@ -4,18 +4,17 @@ def read_json_file(nazov_suboru):
     with open (nazov_suboru, encoding ="utf-8") as f:
         return json.load(f)
 
-subor = input("Skopiruj nazov suboru: ")
-budovy = read_json_file(subor)
+def calcbox(features):
 
-features = budovy["features"]
-
-def suradnice(features):
-    for x_y in features:
+def suradnice(umiestnenie):
+    body = []
+    for x_y in umiestnenie:
         props = x_y["geometry"]
-        suradnice = props["coordinates"]
-        x = suradnice[0]
-        y = suradnice[1]
-        print(x, y)
+        poloha = props["coordinates"]
+        body.append(poloha)
+    return body
 
-poloha = suradnice(features)
-
+def extremy_x(body):
+    l = min(body)
+    p = max(body)
+    print(l, p)
