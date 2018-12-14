@@ -46,4 +46,23 @@ def delenie(features, obdlznik):
         pd_obdlznik = Rectangle(stred_AB, stred_BC)
         ph_obdlznik = Rectangle(S, C)
         lh_obdlznik = Rectangle(stred_DA, stred_CD)
-        delenie(features, ld_obdlznik)
+        #obdlznicky = [ld_obdlznik, pd_obdlznik, ph_obdlznik, lh_obdlznik]
+        def Cluster_ID(features, ld_obdlznik, pd_obdlznik, ph_obdlznik, lh_obdlznik):
+            if features == ld_obdlznik:
+                for id in features:
+                    id["Cluster_ID"] = "1"
+            if features == pd_obdlznik:
+                for id in features:
+                    id["Cluster_ID"] = "2"
+            if features == ph_obdlznik:
+                for id in features:
+                    id["Cluster_ID"] = "3"
+            if features == lh_obdlznik:
+                for id in features:
+                    id["Cluster_ID"] = "4"
+            return id
+    else:
+        exit()
+    return features
+
+output = delenie
