@@ -1,6 +1,7 @@
 import vypocty
 
-data = vypocty.read_json_file("adresnebody.geojson")
+vstup = input("Zadajte nazov suboru + príponu geojson: ")
+data = vypocty.read_json_file(vstup)
 features = data["features"]
 
 cluster_features = vypocty.default_cluster_id(features) #zavola funkciu default_cluster_id(features)
@@ -8,7 +9,7 @@ cluster_features = vypocty.default_cluster_id(features) #zavola funkciu default_
 obdlznik = vypocty.calcbox(features)
 
 new_features = vypocty.delenie(features, obdlznik)
-print(new_features)
 
 nazov_suboru = "output.geojson"
 vypocty.output(new_features, nazov_suboru)
+
