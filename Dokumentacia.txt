@@ -1,0 +1,41 @@
+Celı program sa skladá z 3 skriptov.
+Skript "main" obsahuje základnú kostru programu a nachádza sa v òom 
+len 6 premennıch obsahujúcich funkcie a jedna funkcia na vıstup programu, 
+ktoré sú volané zo skriptu "vypocty". 
+Ide o premenné: 
+
+a) "data", ktorá importuje vstupnı súbor
+
+b) "features", prepis funkcie data
+
+c) "cluster features", ktorá zavolá funkciu default_cluster_id(features)
+
+d) "obdlznik", ktorı vyberá z dát súradnice X a Y a z nich maximá a minimá
+   nutné na ohranièenie celej oblasti a tie samotnú hranicu (obdånik)
+
+d) "new_features" je rekurzívna èas. Zabezpeèuje delenie súboru na štvrtiny 
+   a priraïovanie Clusted ID jednotlivım bodom.
+
+e) "nazov_suboru" oznaèuje vıstupnı súbor
+
+A funkciu "output", ktorá vypíše vıslednı formát.
+
+V skripte "vypocty" prebiehajú vıpoèty všetkıch parametrov nutnıch k urèeniu 
+vıslednıch bodov. Na zaèiatku je funkcia "read_json_file" ktorá naèítava vstupnı súbor
+Pokraèuje funcia "default_cluster_id", ktorı všetkım bodom (celej sade dát), pridelí
+novı parameter "cluster_id" s hodnotou 0. Takıto postup bol zvolenı preto,
+aby sa neskôr u¾ahèilo urèovanie novıch cluster_id pri delení. 
+Pokia¾ bude bodov menej ne zvolenı poèet, všetky budú ma cluster_id = 0.
+Funkcia "calcbox" vytvára nové zoznamy X a Y súradníc a vracia obdånik nutnı
+na ohranièenie bodov.
+Funkcia "najdi_stred" pomáha nájs stredovı bod nutnı k rozdelenie dát na štvrtiny.
+Najdlhšiu èas predstavuje funkcia "delenie" kde je v urèená podmienka
+ko¾ko bodov má by minimálne v jednom obdåniku a tie vykonáva rekurzívnu èas
+kde nastáva delenie vymedzenej oblasti na štvrtiny a pridávanie novıch hodnôt "cluster_id".
+Voláme v nej funkciu "najdi_stred" a funkciu "zhluky". Práve funkcia zhluky zabezpeèuje
+priradenie parametra "cluster_id" pod¾a toho v ktorom štvorci sa bod nachádza.
+Na záver funkcia "output" vypíše vıslednı súbor.
+
+Skript "graphic_object" obsahuje vıpoèty, ktoré sme riešili na cvièení
+nutné k vykresleniu obdånika a celkovo k práci s bodmi a geometriou.
+Do skriptu "vypocty" boli importované len triedy "Point" a "Rectangle"
