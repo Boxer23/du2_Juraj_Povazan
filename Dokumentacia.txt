@@ -1,41 +1,43 @@
-Celı program sa skladá z 3 skriptov.
-Skript "main" obsahuje základnú kostru programu a nachádza sa v òom 
-len 6 premennıch obsahujúcich funkcie a jedna funkcia na vıstup programu, 
-ktoré sú volané zo skriptu "vypocty". 
-Ide o premenné: 
+CelÃ½ program sa skladÃ¡ z 3 skriptov.
+Skript "main" obsahuje zÃ¡kladnÃº kostru programu a nachÃ¡dza sa v Åˆom 
+len 7 premennÃ½ch obsahujÃºcich funkcie a jedna funkcia na vÃ½stup programu, 
+ktorÃ© sÃº volanÃ© zo skriptu "vypocty". 
+Ide o premennÃ©: 
 
-a) "data", ktorá importuje vstupnı súbor
+a) vstup, aby uÅ¾Ã­vateÄ¾ nohol nastaviÅ¥ vstupnÃ½ sÃºbor
 
-b) "features", prepis funkcie data
+b) "data", ktorÃ¡ importuje vstupnÃ½ sÃºbor
 
-c) "cluster features", ktorá zavolá funkciu default_cluster_id(features)
+c) "features", prepis funkcie data
 
-d) "obdlznik", ktorı vyberá z dát súradnice X a Y a z nich maximá a minimá
-   nutné na ohranièenie celej oblasti a tie samotnú hranicu (obdånik)
+d) "cluster features", ktorÃ¡ zavolÃ¡ funkciu default_cluster_id(features)
 
-d) "new_features" je rekurzívna èas. Zabezpeèuje delenie súboru na štvrtiny 
-   a priraïovanie Clusted ID jednotlivım bodom.
+e) "obdlznik", ktorÃ½ vyberÃ¡ z dÃ¡t sÃºradnice X a Y a z nich maximÃ¡ a minimÃ¡
+   nutnÃ© na ohraniÄenie celej oblasti a tieÅ¾ samotnÃº hranicu (obdÄºÅ¾nik)
 
-e) "nazov_suboru" oznaèuje vıstupnı súbor
+f) "new_features" je rekurzÃ­vna ÄasÅ¥. ZabezpeÄuje delenie sÃºboru na Å¡tvrtiny 
+   a priraÄovanie Clusted ID jednotlivÃ½m bodom.
 
-A funkciu "output", ktorá vypíše vıslednı formát.
+g) "nazov_suboru" oznaÄuje vÃ½stupnÃ½ sÃºbor
 
-V skripte "vypocty" prebiehajú vıpoèty všetkıch parametrov nutnıch k urèeniu 
-vıslednıch bodov. Na zaèiatku je funkcia "read_json_file" ktorá naèítava vstupnı súbor
-Pokraèuje funcia "default_cluster_id", ktorı všetkım bodom (celej sade dát), pridelí
-novı parameter "cluster_id" s hodnotou 0. Takıto postup bol zvolenı preto,
-aby sa neskôr u¾ahèilo urèovanie novıch cluster_id pri delení. 
-Pokia¾ bude bodov menej ne zvolenı poèet, všetky budú ma cluster_id = 0.
-Funkcia "calcbox" vytvára nové zoznamy X a Y súradníc a vracia obdånik nutnı
-na ohranièenie bodov.
-Funkcia "najdi_stred" pomáha nájs stredovı bod nutnı k rozdelenie dát na štvrtiny.
-Najdlhšiu èas predstavuje funkcia "delenie" kde je v urèená podmienka
-ko¾ko bodov má by minimálne v jednom obdåniku a tie vykonáva rekurzívnu èas
-kde nastáva delenie vymedzenej oblasti na štvrtiny a pridávanie novıch hodnôt "cluster_id".
-Voláme v nej funkciu "najdi_stred" a funkciu "zhluky". Práve funkcia zhluky zabezpeèuje
-priradenie parametra "cluster_id" pod¾a toho v ktorom štvorci sa bod nachádza.
-Na záver funkcia "output" vypíše vıslednı súbor.
+A funkciu "output", ktorÃ¡ vypÃ­Å¡e vÃ½slednÃ½ formÃ¡t.
 
-Skript "graphic_object" obsahuje vıpoèty, ktoré sme riešili na cvièení
-nutné k vykresleniu obdånika a celkovo k práci s bodmi a geometriou.
-Do skriptu "vypocty" boli importované len triedy "Point" a "Rectangle"
+V skripte "vypocty" prebiehajÃº vÃ½poÄty vÅ¡etkÃ½ch parametrov nutnÃ½ch k urÄeniu 
+vÃ½slednÃ½ch bodov. Na zaÄiatku je funkcia "read_json_file" ktorÃ¡ naÄÃ­tava vstupnÃ½ sÃºbor
+PokraÄuje funcia "default_cluster_id", ktorÃ½ vÅ¡etkÃ½m bodom (celej sade dÃ¡t), pridelÃ­
+novÃ½ parameter "cluster_id" s hodnotou 0. TakÃ½to postup bol zvolenÃ½ preto,
+aby sa neskÃ´r uÄ¾ahÄilo urÄovanie novÃ½ch cluster_id pri delenÃ­. 
+PokiaÄ¾ bude bodov menej neÅ¾ zvolenÃ½ poÄet, vÅ¡etky budÃº maÅ¥ cluster_id = 0.
+Funkcia "calcbox" vytvÃ¡ra novÃ© zoznamy X a Y sÃºradnÃ­c a vracia obdÄºÅ¾nik nutnÃ½
+na ohraniÄenie bodov.
+Funkcia "najdi_stred" pomÃ¡ha nÃ¡jsÅ¥ stredovÃ½ bod nutnÃ½ k rozdelenie dÃ¡t na Å¡tvrtiny.
+NajdlhÅ¡iu ÄasÅ¥ predstavuje funkcia "delenie" kde je v urÄenÃ¡ podmienka
+koÄ¾ko bodov mÃ¡ byÅ¥ minimÃ¡lne v jednom obdÄºÅ¾niku a tieÅ¾ vykonÃ¡va rekurzÃ­vnu ÄasÅ¥
+kde nastÃ¡va delenie vymedzenej oblasti na Å¡tvrtiny a pridÃ¡vanie novÃ½ch hodnÃ´t "cluster_id".
+VolÃ¡me v nej funkciu "najdi_stred" a funkciu "zhluky". PrÃ¡ve funkcia zhluky zabezpeÄuje
+priradenie parametra "cluster_id" podÄ¾a toho v ktorom Å¡tvorci sa bod nachÃ¡dza.
+Na zÃ¡ver funkcia "output" vypÃ­Å¡e vÃ½slednÃ½ sÃºbor.
+
+Skript "graphic_object" obsahuje vÃ½poÄty, ktorÃ© sme rieÅ¡ili na cviÄenÃ­
+nutnÃ© k vykresleniu obdÄºÅ¾nika a celkovo k prÃ¡ci s bodmi a geometriou.
+Do skriptu "vypocty" boli importovanÃ© len triedy "Point" a "Rectangle"
